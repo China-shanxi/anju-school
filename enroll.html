@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孝义市安居街小学 - 招生报名</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-box{
+            max-width:700px;
+            margin:0 auto;
+            background:#fff;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 0 15px #0056b322;
+        }
+        .form-item{
+            margin-bottom:22px;
+        }
+        .form-item label{
+            display:block;
+            margin-bottom:8px;
+            font-weight:bold;
+            color:#003366;
+        }
+        .form-item input,.form-item select,.form-item textarea{
+            width:100%;
+            padding:12px;
+            border:1px solid #cce0f5;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .form-item input:focus,.form-item select:focus,.form-item textarea:focus{
+            outline:none;
+            border-color:#0056b3;
+        }
+        .submit-btn{
+            width:100%;
+            padding:14px;
+            background:#0056b3;
+            color:#fff;
+            border:none;
+            font-size:18px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+        .submit-btn:hover{
+            background:#004080;
+        }
+        .tip-text{
+            color:#666;
+            font-size:14px;
+            margin-top:6px;
+        }
+        .notice{
+            background:#e8f1fc;
+            padding:20px;
+            border-radius:8px;
+            margin-bottom:30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 和首页完全一致 -->
+    <header class="top-header">
+        <div class="container">
+            <div class="school-logo">
+                <h1>孝义市安居街小学</h1>
+                <p>立德树人 乐学善思 和谐发展</p>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html">首页</a>
+                <a href="index.html#about">校园简介</a>
+                <a href="index.html#news">新闻通知</a>
+                <a href="enroll.html" class="active">招生报名</a>
+                <a href="index.html#teacher">教师风采</a>
+                <a href="index.html#class">班级园地</a>
+                <a href="index.html#gallery">校园相册</a>
+                <a href="index.html#contact">联系我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="module">
+            <h2 class="module-title">2026秋季新生招生报名</h2>
+            <div class="notice">
+                <h3>报名须知</h3>
+                <p>1、招生范围：安居街片区适龄儿童，年满6周岁（当年8月31日前出生）</p>
+                <p>2、所需材料：户口本、房产证/居住证、儿童预防接种证</p>
+                <p>3、报名时间：每年7月上旬，线上预报名+线下资料审核</p>
+                <p>4、提交后工作人员会在3个工作日内电话联系家长核实信息</p>
+            </div>
+            <div class="form-box">
+                <form id="enrollForm">
+                    <div class="form-item">
+                        <label>学生姓名</label>
+                        <input type="text" required placeholder="请输入孩子真实姓名" id="stuName">
+                    </div>
+                    <div class="form-item">
+                        <label>学生性别</label>
+                        <select id="stuSex" required>
+                            <option value="">请选择</option>
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label>出生日期</label>
+                        <input type="date" id="stuBirth" required>
+                    </div>
+                    <div class="form-item">
+                        <label>就读年级</label>
+                        <select id="grade" required>
+                            <option value="">请选择</option>
+                            <option value="一年级">一年级新生</option>
+                            <option value="转学生">插班转学生</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label>家长姓名</label>
+                        <input type="text" required placeholder="监护人姓名" id="parentName">
+                    </div>
+                    <div class="form-item">
+                        <label>联系电话</label>
+                        <input type="tel" required placeholder="请填写常用手机号" id="phone">
+                    </div>
+                    <div class="form-item">
+                        <label>家庭详细住址</label>
+                        <input type="text" required placeholder="孝义市安居街XX小区/楼栋" id="address">
+                    </div>
+                    <div class="form-item">
+                        <label>备注说明</label>
+                        <textarea rows="4" placeholder="有无特殊需求、转学说明等（选填）" id="remark"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">提交报名信息</button>
+                    <p class="tip-text">提示：本表单仅线上登记，正式录取以学校现场审核为准</p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 孝义市安居街小学 版权所有</p>
+            <p>本网站仅为静态展示网站，部署于GitHub Pages</p>
+        </div>
+    </footer>
+
+    <script>
+        // 本地存储报名信息（仅保存在当前浏览器）
+        const form = document.getElementById('enrollForm');
+        form.onsubmit = function(e){
+            e.preventDefault();
+            const data = {
+                stuName:document.getElementById('stuName').value,
+                stuSex:document.getElementById('stuSex').value,
+                stuBirth:document.getElementById('stuBirth').value,
+                grade:document.getElementById('grade').value,
+                parentName:document.getElementById('parentName').value,
+                phone:document.getElementById('phone').value,
+                address:document.getElementById('address').value,
+                remark:document.getElementById('remark').value,
+                time:new Date().toLocaleString()
+            }
+            let list = JSON.parse(localStorage.getItem('enrollList')) || [];
+            list.push(data);
+            localStorage.setItem('enrollList',JSON.stringify(list));
+            alert("报名信息提交成功！我们会尽快与您联系");
+            form.reset();
+        }
+    </script>
+</body>
+</html>
