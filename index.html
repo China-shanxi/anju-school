@@ -149,7 +149,27 @@
                 <div class="gallery-card">春季运动会</div>
             </div>
         </section>
+<!-- 家校留言板块 -->
+<section id="message" class="module">
+    <h2 class="module-title">家校留言板</h2>
+    <div style="max-width:800px;margin:0 auto;">
+        <!-- 发布留言表单 -->
+        <div style="background:#f3f8ff;padding:25px;border-radius:10px;margin-bottom:30px;">
+            <div style="margin-bottom:16px;">
+                <label style="display:block;margin-bottom:6px;color:#003366;font-weight:bold;">您的称呼</label>
+                <input type="text" id="msgUser" placeholder="家长/学生姓名" style="width:100%;padding:10px;border:1px solid #cce0f5;border-radius:6px;">
+            </div>
+            <div style="margin-bottom:16px;">
+                <label style="display:block;margin-bottom:6px;color:#003366;font-weight:bold;">留言内容</label>
+                <textarea id="msgText" rows="4" placeholder="咨询、建议、家校沟通留言..." style="width:100%;padding:10px;border:1px solid #cce0f5;border-radius:6px;"></textarea>
+            </div>
+            <button id="sendMsg" style="padding:10px 26px;background:#0056b3;color:#fff;border:none;border-radius:6px;cursor:pointer;">提交留言</button>
+        </div>
 
+        <!-- 留言展示区域 -->
+        <div id="msgList"></div>
+    </div>
+</section>
         <!-- 联系我们 -->
         <section id="contact" class="module contact-box">
             <h2 class="module-title">联系我们</h2>
