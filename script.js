@@ -35,3 +35,62 @@ document.querySelectorAll('.nav-menu a').forEach(link=>{
         targetDom.scrollIntoView({behavior:"smooth"})
     }
 })
+// 家校留言板功能
+const msgUser = document.getElementById('msgUser');
+const msgText = document.getElementById('msgText');
+const sendMsg = document.getElementById('sendMsg');
+const msgList = document.getElementById('msgList');
+
+// 读取本地留言
+function loadMessage(){
+    const arr = JSON.parse(localStorage.getItem('schoolMsg')) || [];
+    msgList.innerHTML = "";
+    if(arr.length === 0){
+        msgList.innerHTML = "<p style='text-align:center;color:#666;'>暂无留言，快来发布第一条吧</p>";
+        return;
+    }
+    arr.forEach(item=>{
+        const div = document.createElement('div');
+        div.style.background="#fff";
+        div.style.border="1px solid #e8f1fc";
+        div.style.borderRadius="8px";
+        div.style.padding="16px";
+        div.style.marginBottom="14px";
+        div.innerHTML = `
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-weight:bold;color:#0056b3;">${item.name}</span>
+                <span style="font-size:13px;color:#888;">${item.time}</span>
+            </div>
+            <p style="color:#333;line-height:1.7;">${item.content}</p>
+        `;
+        msgList.appendChild(div);
+    })
+}
+// 页面加载读取留言
+loadMessage();
+
+// 提交留言
+sendMsg.onclick = function(){
+    const name = msgUser.value.trim();
+    const text = msgText.value.trim();
+    if(!name){
+        alert("请填写称呼");
+        return;
+    }
+    if(!text){
+        alert("请输入留言内容");
+        return;
+    }
+    const data = {
+        name:name,
+        content:text,
+        time:new Date().toLocaleString()
+    }
+    let list = JSON.parse(localStorage.getItem('schoolMsg')) || [];
+    list.unshift(data); //新留言放最顶部
+    localStorage.setItem('schoolMsg',JSON.stringify(list));
+    loadMessage();
+    msgUser.value = "";
+    msgText.value = "";
+    alert("留言发布成功！");
+}
